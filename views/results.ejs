@@ -10,8 +10,8 @@
     <h2>Here are the Awesome Quotes!</h2>
     <% for (var index in quotelist){ %>
         <%=`"${quotelist[index].quote}"` %>
-        <p><%=`${quotelist[index].name} ${quotelist[index].created_at.toLocaleDateString
-            ({weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })`%></p>
+        <p><%=`${quotelist[index].name} at ${quotelist[index].created_at.toLocaleTimeString('en-us',{hour: '2-digit',minute:'2-digit', hour12: 'true'})}
+             ${quotelist[index].created_at.toLocaleDateString('en-US',{year: 'numeric', month: 'long', day: 'numeric' })}`%></p>
         <hr>
     <% } %>
 

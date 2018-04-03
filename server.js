@@ -14,9 +14,10 @@ mongoose.connect('mongodb://localhost/quoting_dojo');
 var QuoteSchema = new mongoose.Schema({ //Blueprint.  name and age in each document (row)
     name:String,
     quote: String,
-    created_at : { type : Date, default: Date.now } ,
-    
-})
+},
+{
+    timestamps: { createdAt: 'created_at'}
+ })
 mongoose.model('Quote',QuoteSchema); //we are settting this Schema in our Models as 'Quote'.   So you can do Quote.find{}
 //Set the mongoose.model to the "Quote" variable so that we can run model-like methods on it to make all of the CRUD operations easier.
 var Quote = mongoose.model('Quote'); //We are retrieving the Schema from out Models, named Quote. 
@@ -58,7 +59,8 @@ app.post('/quotes', function(req,res){
 
 app.get('/quotes', function(req,res){
     console.log("in the get*******");
-    Quote.find({},function(err,quotes){
+    //Quote.find({},function(err,quotes){
+    Quote.find({}).sort([['created_at', -1]]).exec(function(err,quotes){
         if(err){
             console.log('error in getting quotes from db')
         }else{
