@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Here are the Awesome Quotes!</h2>
+    <% for (var index in quotelist){ %>
+        <%=`"${quotelist[index].quote}"` %>
+        <p><%=`${quotelist[index].name} ${quotelist[index].created_at.toLocaleDateString
+            ({weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })`%></p>
+        <hr>
+    <% } %>
+
+</body>
+</html>
